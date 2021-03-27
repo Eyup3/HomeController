@@ -10,9 +10,9 @@ function getDirectories(path) {
 
 let HtmlEditor = () => {
 
-    let basehtml = fs.readFileSync(__dirname + '\\public\\index.html', 'utf8')
+    let basehtml = fs.readFileSync(__dirname + '/public/index.html', 'utf8')
 
-    let arr = getDirectories(__dirname + "\\..")
+    let arr = getDirectories(__dirname + "/..")
 
     let btns = "";
     arr.forEach(element => {
