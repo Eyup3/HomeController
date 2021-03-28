@@ -3,8 +3,6 @@ const app = express();
 const spawn = require('child_process').spawn;
 const fs = require('fs');
 
-module.exports = app;
-
 console.log('Parse Config');
 let config = JSON.parse((fs.readFileSync("./config.json")));
 
@@ -13,7 +11,6 @@ let editetHtml = require('./htmlEditor').HTML;
 
 app.get('/', (req, res) => {
     res.send(editetHtml);
-    module.exports.res = res;
     console.log("Served Website");
 });
 
@@ -28,7 +25,7 @@ const callScript = (command) => {
     try {
         let path = __dirname + '/../' + command;
 
-        let proc = spawn('node', [path.toString() + '\\index.js'], {
+        let proc = spawn('node', [path.toString() + '/index.js'], {
             stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
         }).on('message', (data) => {
             console.log(data);
@@ -37,7 +34,7 @@ const callScript = (command) => {
 
         setTimeout(
             () => { proc.kill() },
-            JSON.parse((fs.readFileSync(path + "\\" + "params.json")).maxlength || 5) * 1000, 0);
+            JSON.parse((fs.readFileSync(path + "/" + "params.json")).maxlength ?? 10) * 1000, 0);
     } catch (e) { console.log(e); }
 
 };
