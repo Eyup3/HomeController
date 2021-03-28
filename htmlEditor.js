@@ -16,7 +16,7 @@ let HtmlEditor = () => {
 
     let btns = "";
     arr.forEach(element => {
-        if (element != "index") {
+        if (element != "HomeController") {
 
             btns += `<button class="btn" onclick="sendCmd('` + element + `'); ">` + element + `</button>`
         }
