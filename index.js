@@ -19,7 +19,7 @@ app.post('/:cmd', (req, res) => {
     callScript(req.params.cmd);
 });
 
-app.listen(config.port, () => { console.log("Server is listening") });
+app.listen(config.port, () => { console.log("Server is listening on localhost:" + config.port) });
 
 const callScript = (command) => {
     try {
