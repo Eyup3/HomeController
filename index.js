@@ -34,7 +34,7 @@ const callScript = (command) => {
 
         setTimeout(
             () => { proc.kill() },
-            JSON.parse((fs.readFileSync(path + "/" + "params.json")).maxlength ?? 10) * 1000, 0);
+            JSON.parse((fs.readFileSync(path + "/" + "params.json")).maxlength ? ? 10) * 1000, 0);
     } catch (e) { console.log(e); }
 
 };
