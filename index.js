@@ -1,5 +1,9 @@
+//create a folder, call it index and place these files in their
+//now create new Folders next to the index folder with a node project in them and a specified script
+
 const express = require('express');
 const app = express();
+
 const spawn = require('child_process').spawn;
 const fs = require('fs');
 
@@ -7,7 +11,7 @@ console.log('Parse Config');
 let config = JSON.parse((fs.readFileSync("./config.json")));
 
 console.log("Get edited Html");
-let editetHtml = require('./htmlEditor').HTML;
+let editetHtml = require('./HtmlEditor').HTML;
 
 app.get('/', (req, res) => {
     res.send(editetHtml);
@@ -21,6 +25,7 @@ app.post('/:cmd', (req, res) => {
 
 app.listen(config.port, () => { console.log("Server is listening on localhost:" + config.port) });
 
+//Spawn specified script
 const callScript = (command) => {
     try {
         let path = __dirname + '/../' + command;
